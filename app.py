@@ -1,62 +1,22 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session
-import requests
 import json
-import base64
+import os
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with a secure secret key
-
-# GitHub repository details
-GITHUB_REPO = "YashPhadtare12/Hospital_Management"  # Your GitHub repository
-GITHUB_TOKEN = "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"  # Replace with your GitHub personal access token
-DATA_FILE_URL = f"https://api.github.com/repos/{GITHUB_REPO}/contents/data.json"
+app.secret_key = 'your_secret_key'
 
 def load_data():
-    """
-    Load data from the data.json file in the GitHub repository.
-    """
-    try:
-        response = requests.get(DATA_FILE_URL, headers={"Authorization": f"token {GITHUB_TOKEN}"})
-        response.raise_for_status()
-        content = response.json()["content"]
-        return json.loads(base64.b64decode(content).decode("utf-8"))
-    except Exception as e:
-        print(f"Error loading data: {e}")
-        return {}
+    if os.path.exists("data.json"):
+        with open("data.json", "r") as file:
+            return json.load(file)
+    return {}
 
 def save_data(data):
-    """
-    Save data to the data.json file in the GitHub repository.
-    """
-    try:
-        # Get the current SHA of the file to update it
-        response = requests.get(DATA_FILE_URL, headers={"Authorization": f"token {GITHUB_TOKEN}"})
-        response.raise_for_status()
-        sha = response.json()["sha"]
-
-        # Encode the new data
-        content = base64.b64encode(json.dumps(data, indent=4).encode("utf-8")).decode("utf-8")
-
-        # Update the file on GitHub
-        update_response = requests.put(
-            DATA_FILE_URL,
-            headers={"Authorization": f"token {GITHUB_TOKEN}"},
-            json={
-                "message": "Update data.json",
-                "content": content,
-                "sha": sha
-            }
-        )
-        update_response.raise_for_status()
-        print("Data saved successfully.")
-    except Exception as e:
-        print(f"Error saving data: {e}")
+    with open("data.json", "w") as file:
+        json.dump(data, file, indent=4)
 
 def generate_slots(start_time, end_time, break_start, break_end):
-    """
-    Generate time slots for doctor availability.
-    """
     slots = []
     current_time = datetime.strptime(start_time, "%H:%M")
     end_time = datetime.strptime(end_time, "%H:%M")
@@ -211,6 +171,7 @@ def delete_appointment():
     date = request.json.get("date")
     time = request.json.get("time")
     
+    # Filter out the appointment to delete
     data[username]["appointments"] = [appt for appt in appointments if not (
         appt["patient_name"] == patientName and
         appt["date"] == date and
@@ -219,6 +180,7 @@ def delete_appointment():
     
     save_data(data)
     return jsonify({"success": True})
+    
 
 @app.route("/view-doctors")
 def view_doctors():
@@ -313,3 +275,4 @@ def logout():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
