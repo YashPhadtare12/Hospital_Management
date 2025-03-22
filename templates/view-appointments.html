@@ -35,7 +35,7 @@
               <td data-label="Time">{{ appointment.time }}</td>
               <td data-label="Status">{{ appointment.status }}</td>
               <td data-label="Actions">
-                <button class="btn" style="width: 100%;" "deleteAppointment('{{ appointment.patient_name }}', '{{ appointment.date }}', '{{ appointment.time }}')">Delete</button>
+                <button class="btn" style="width: 100%;" onclick="deleteAppointment('{{ appointment.patient_name }}', '{{ appointment.date }}', '{{ appointment.time }}')">Delete</button>
               </td>
             </tr>
           {% endfor %}
