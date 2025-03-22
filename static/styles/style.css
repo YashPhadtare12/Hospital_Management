@@ -116,20 +116,18 @@ textarea:focus {
 }
 
 button, .btn{
-    width: 50%;
-    margin: 10px auto;
-    background-color: rgb(200, 200, 200);
+    width: 50%; /* Set width to 50% */
+    margin: 10px 0; /* Adjusted margin */
+    background-color: rgb(235, 220, 200);
     color: rgb(0, 0, 0);
     border: none;
     cursor: pointer;
     font-size: 1.1em;
     font-weight: 550;
     transition: background-color 0.3s, transform 0.2s;
-    padding: 12px;
+    padding: 12px 20px; /* Adjusted padding */
     border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline-block; /* Changed to inline-block for flex buttons */
     text-decoration: none;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -142,7 +140,7 @@ button a{
 }
 
 button:hover, .btn:hover {
-    background-color: rgb(170, 170, 170);
+    background-color: rgb(215, 190, 170);
 }
 
 button:active, .btn:active {
@@ -166,7 +164,7 @@ table {
 }
 
 thead {
-    background-color: rgb(200, 200, 200);
+    background-color: rgb(235, 220, 200);
     color: rgb(40, 40, 40);
 }
 
@@ -336,6 +334,10 @@ textarea::placeholder {
 
 .btn3 {
     width: 100%;
+    display: flex;
+    gap: 10px; /* Added gap for spacing between buttons */
+    justify-content: center; /* Center buttons horizontally */
+    flex-wrap: wrap; /* Allow buttons to wrap */
 }
 
 .index-body{
@@ -363,6 +365,20 @@ textarea::placeholder {
 
 .body-add{
     background-color: rgb(236, 236, 236);
+}
+
+/* Main Buttons on Index Page */
+.main-btn {
+    display: flex;
+    gap: 10px; /* Spacing between buttons */
+    justify-content: center; /* Center buttons horizontally */
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    margin-bottom: 20px; /* Add some margin at the bottom */
+}
+
+.main-btn .btn {
+    width: calc(50% - 5px); /* Set width to 50% with gap adjustment */
+    margin: 0; /* Remove default margin */
 }
 
 /* Slot Container */
@@ -406,8 +422,6 @@ textarea::placeholder {
 .slot-option.selected .tick {
   display: inline;
 }
-
-
 
 /* Booked Slot */
 .slot-option.booked {
