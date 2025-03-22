@@ -106,6 +106,9 @@ input[type="date"]{
     font-family: Arial, Helvetica, sans-serif;
     color:#5e5e5e;
 }
+#search{
+    border-color: rgb(215, 190, 170);
+}
 
 input:focus,
 select:focus,
@@ -116,8 +119,8 @@ textarea:focus {
 }
 
 button, .btn{
-    width: 50%; /* Set width to 50% */
-    margin: 10px 0; /* Adjusted margin */
+    width: 50%;
+    margin: 10px auto;
     background-color: rgb(235, 220, 200);
     color: rgb(0, 0, 0);
     border: none;
@@ -125,9 +128,11 @@ button, .btn{
     font-size: 1.1em;
     font-weight: 550;
     transition: background-color 0.3s, transform 0.2s;
-    padding: 12px 20px; /* Adjusted padding */
+    padding: 12px;
     border-radius: 8px;
-    display: inline-block; /* Changed to inline-block for flex buttons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -141,6 +146,7 @@ button a{
 
 button:hover, .btn:hover {
     background-color: rgb(215, 190, 170);
+    color: white;
 }
 
 button:active, .btn:active {
@@ -159,7 +165,7 @@ table {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: solid 1px rgb(200, 200, 200);
+    border: solid 1px rgb(235, 220, 200);
     margin: 20px 0px;
 }
 
@@ -334,10 +340,6 @@ textarea::placeholder {
 
 .btn3 {
     width: 100%;
-    display: flex;
-    gap: 10px; /* Added gap for spacing between buttons */
-    justify-content: center; /* Center buttons horizontally */
-    flex-wrap: wrap; /* Allow buttons to wrap */
 }
 
 .index-body{
@@ -365,20 +367,6 @@ textarea::placeholder {
 
 .body-add{
     background-color: rgb(236, 236, 236);
-}
-
-/* Main Buttons on Index Page */
-.main-btn {
-    display: flex;
-    gap: 10px; /* Spacing between buttons */
-    justify-content: center; /* Center buttons horizontally */
-    flex-wrap: wrap; /* Allow buttons to wrap */
-    margin-bottom: 20px; /* Add some margin at the bottom */
-}
-
-.main-btn .btn {
-    width: calc(50% - 5px); /* Set width to 50% with gap adjustment */
-    margin: 0; /* Remove default margin */
 }
 
 /* Slot Container */
@@ -486,4 +474,31 @@ textarea::placeholder {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
+}
+
+/* Custom styles for buttons on index and view appointments pages */
+.main-btn {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.main-btn .btn {
+    width: calc(50% - 10px); /* 50% width with 20px gap */
+    margin: 0;
+}
+
+.btn1.btn3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn1.btn3 .btn {
+    width: calc(50% - 10px); /* 50% width with 20px gap */
+    margin: 0;
 }
