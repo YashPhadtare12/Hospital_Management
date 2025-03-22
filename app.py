@@ -171,6 +171,7 @@ def delete_appointment():
     date = request.json.get("date")
     time = request.json.get("time")
     
+    # Filter out the appointment to delete
     data[username]["appointments"] = [appt for appt in appointments if not (
         appt["patient_name"] == patientName and
         appt["date"] == date and
@@ -179,6 +180,7 @@ def delete_appointment():
     
     save_data(data)
     return jsonify({"success": True})
+    
 
 @app.route("/view-doctors")
 def view_doctors():
