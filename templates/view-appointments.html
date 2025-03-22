@@ -41,12 +41,14 @@
           {% endfor %}
         </tbody>
       </table>
-      <div class="btn1 btn3">
-        <button onclick="location.href='{{ url_for('schedule_appointment') }}';">Schedule Appointment</button>
-        <button onclick="location.href='{{ url_for('home') }}';">Home</button>
-        <button onclick="exportAppointments()">Export as Excel file</button>
-        <button onclick="location.href='{{ url_for('logout') }}';">Logout</button>
+      <div class="main-btn">
+        <button onclick="location.href='{{ url_for('home') }}';" class="btn">Home</button>
+        <button onclick="location.href='{{ url_for('schedule_appointment') }}';" class="btn">Schedule Appointment</button>
+        <button onclick="exportAppointments()" class="btn">Export as Excel file</button>
       </div>
+      <footer>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+      </footer>
     </div>
     <script src="{{ url_for('static', filename='scripts/view-appointments.js') }}"></script>
   </body>
