@@ -6,14 +6,17 @@ from datetime import datetime, timedelta
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
+# Define the path to the data.json file
+DATA_PATH = os.getenv('DATA_PATH', '/tmp/data.json')
+
 def load_data():
-    if os.path.exists("data.json"):
-        with open("data.json", "r") as file:
+    if os.path.exists(DATA_PATH):
+        with open(DATA_PATH, "r") as file:
             return json.load(file)
     return {}
 
 def save_data(data):
-    with open("data.json", "w") as file:
+    with open(DATA_PATH, "w") as file:
         json.dump(data, file, indent=4)
 
 def generate_slots(start_time, end_time, break_start, break_end):
@@ -171,6 +174,7 @@ def delete_appointment():
     date = request.json.get("date")
     time = request.json.get("time")
     
+    # Filter out the appointment to delete
     data[username]["appointments"] = [appt for appt in appointments if not (
         appt["patient_name"] == patientName and
         appt["date"] == date and
@@ -179,7 +183,7 @@ def delete_appointment():
     
     save_data(data)
     return jsonify({"success": True})
-
+    
 @app.route("/view-doctors")
 def view_doctors():
     if 'username' not in session:
