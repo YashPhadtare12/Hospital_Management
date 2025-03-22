@@ -5,6 +5,66 @@
             "email": "template@email.com",
             "username": "Template",
             "password": "123"
+        },
+        {
+            "name": "Yash Phadtare",
+            "email": "yashphadtare211@gmail.com",
+            "username": "yash",
+            "password": "123"
         }
-    ]
+    ],
+    "Template": {
+        "doctors": [
+            {
+                "name": "Dr. Karan Ganesh Jaybhay",
+                "mobile": "9852647723",
+                "email": "karan@123",
+                "gender": "Male",
+                "dob": "1992-05-17",
+                "address": "ABC",
+                "specialization": "General Physician",
+                "experience": "12",
+                "qualification": "MBBS",
+                "consultation_fee": "200"
+            },
+            {
+                "name": "Dr. Pruthviraj Bhoite",
+                "mobile": "8921364598",
+                "email": "yashphadtare211@gmail.com",
+                "gender": "Male",
+                "dob": "2005-06-12",
+                "address": "ABC",
+                "specialization": "Cardiologist",
+                "experience": "20",
+                "qualification": "MBBS",
+                "consultation_fee": "200"
+            }
+        ],
+        "appointments": [
+            {
+                "patient_name": "Shubham Salunke",
+                "doctor": "Dr. Karan Jaybhay",
+                "date": "2025-03-20",
+                "time": "09:00",
+                "status": "Denied"
+            },
+            {
+                "patient_name": "Shubham Salunke",
+                "doctor": "Dr. Karan Jaybhay",
+                "date": "2025-03-20",
+                "time": "09:30",
+                "status": "Scheduled"
+            }
+        ],
+        "patients": [
+            {
+                "name": "Shubham Salunke",
+                "mobile": "8975253215",
+                "email": "shubham@gmail.ccom",
+                "gender": "Male",
+                "address": "Korti",
+                "dob": "2004-12-10"
+            }
+        ]
+    }
 }
