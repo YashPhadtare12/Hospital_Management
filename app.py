@@ -9,7 +9,7 @@ app.secret_key = 'your_secret_key'  # Replace with a secure secret key
 
 # GitHub repository details
 GITHUB_REPO = "YashPhadtare12/Hospital_Management"  # Your GitHub repository
-GITHUB_TOKEN = "your-github-token"  # Replace with your GitHub personal access token
+GITHUB_TOKEN = "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"  # Replace with your GitHub personal access token
 DATA_FILE_URL = f"https://api.github.com/repos/{GITHUB_REPO}/contents/data.json"
 
 def load_data():
