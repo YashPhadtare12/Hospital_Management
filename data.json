@@ -1,10 +1,6 @@
 {
-    "users": [
-        {
-            "name": "Template",
-            "email": "template@email.com",
-            "username": "Template",
-            "password": "123"
-        }
-    ]
+  "users": [],
+  "doctors": [],
+  "appointments": [],
+  "patients": []
 }
